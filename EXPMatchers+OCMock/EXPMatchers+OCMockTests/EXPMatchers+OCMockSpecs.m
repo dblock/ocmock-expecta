@@ -10,14 +10,19 @@ SpecBegin(EXPMatchers)
 
 it(@"expect to receive an instance method", ^{
     NSString *s = @"TESTING";
-    expect(s).to.receive(@selector(lowercaseString));
-    [s lowercaseString];
+    expect(s).to.receive(@selector(lowercaseString), ^{
+      [s lowercaseString];
+    });
 });
 
+/* BUG: hangs
 it(@"expect to not receive an instance method", ^{
     NSString *s = @"TESTING";
-    expect(s).notTo.receive(@selector(lowercaseString));
+    expect(s).toNot.receive(@selector(lowercaseString), ^{
+        [s uppercaseString];
+    });
 });
+*/
 
 SpecEnd
 

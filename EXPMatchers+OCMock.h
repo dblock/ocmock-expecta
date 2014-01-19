@@ -8,4 +8,6 @@
 
 #import "Expecta.h"
 
-EXPMatcherInterface(receive, (SEL selector));
+typedef void (^ EmptyBlock)(void);
+
+EXPMatcherInterface(receive, (SEL selector, EmptyBlock block));
