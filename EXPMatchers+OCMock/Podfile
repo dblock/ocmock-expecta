@@ -1,0 +1,7 @@
+platform :ios, '7.0'
+
+target 'EXPMatchers+OCMockTests', :exclusive => true do
+  pod 'OCMock', '~> 2.2.2'
+  pod 'Specta', '~> 0.2.1'
+  pod 'EXPMatchers+OCMock', :path => "../"
+end

@@ -1,0 +1,24 @@
+PODS:
+  - Expecta (0.2.3)
+  - EXPMatchers+OCMock (1.0):
+    - Expecta
+    - OCMock
+  - OCMock (2.2.2)
+  - Specta (0.2.1)
+
+DEPENDENCIES:
+  - EXPMatchers+OCMock (from `../`)
+  - OCMock (~> 2.2.2)
+  - Specta (~> 0.2.1)
+
+EXTERNAL SOURCES:
+  EXPMatchers+OCMock:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Expecta: dbc4a27fabb853bdd2e907e33f11ee43a9a47d0c
+  EXPMatchers+OCMock: de331c2aa1ae2d9b42f0dd940f4b6c841e32f354
+  OCMock: ffba68873fd32cfd35d885bddad23bfa816da4a3
+  Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
+
+COCOAPODS: 0.29.0

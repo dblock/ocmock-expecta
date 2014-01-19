@@ -1,0 +1,17 @@
+//
+//  EXPMatchers+OCMock-Prefix.pch
+//  EXPMatchers+OCMock
+//
+//  Created by Daniel Doubrovkine on 1/19/14.
+//
+//
+
+#ifdef __OBJC__
+
+#define EXP_SHORTHAND
+#include <Specta/Specta.h>
+#include <Expecta/Expecta.h>
+#include <OCMock/OCMock.h>
+#include <EXPMatchers+OCMock.h>
+
+#endif
