@@ -3,7 +3,7 @@ ocmock-expecta
 
 [Expecta](https://github.com/specta/expecta) matchers for [ocmock](https://github.com/erikdoe/ocmock).
 
-THIS IS JUST A SKELETON, DOESN'T ACTUALLY WORK
+This almost works, the next issue is https://github.com/dblock/ocmock-expecta/issues/1.
 
 ### License
 
