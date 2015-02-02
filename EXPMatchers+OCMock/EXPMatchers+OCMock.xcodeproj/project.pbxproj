@@ -28,8 +28,8 @@
 		3CF75A44188C4666007B47FA /* EXPMatchers+OCMockTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EXPMatchers+OCMockTests-Info.plist"; sourceTree = "<group>"; };
 		3CF75A46188C4666007B47FA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3CF75A55188C4742007B47FA /* EXPMatchers+OCMockSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EXPMatchers+OCMockSpecs.m"; sourceTree = "<group>"; };
-		58116A96099846D0A0784FB8 /* Pods-EXPMatchers+OCMock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EXPMatchers+OCMock.xcconfig"; path = "Pods/Pods-EXPMatchers+OCMock.xcconfig"; sourceTree = "<group>"; };
-		83C243884D654AB09E12BEBB /* Pods-EXPMatchers+OCMockTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EXPMatchers+OCMockTests.xcconfig"; path = "Pods/Pods-EXPMatchers+OCMockTests.xcconfig"; sourceTree = "<group>"; };
+		40342CCC6D9E1583D9938145 /* Pods-EXPMatchers+OCMockTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EXPMatchers+OCMockTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EXPMatchers+OCMockTests/Pods-EXPMatchers+OCMockTests.release.xcconfig"; sourceTree = "<group>"; };
+		75A879BA5336B1FA97DAC447 /* Pods-EXPMatchers+OCMockTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EXPMatchers+OCMockTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EXPMatchers+OCMockTests/Pods-EXPMatchers+OCMockTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8CA459EFDCAA4951AF2D3CBB /* libPods-EXPMatchers+OCMock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EXPMatchers+OCMock.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -48,14 +48,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1EBE8BE14CDE1AF9ADFAA50F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				75A879BA5336B1FA97DAC447 /* Pods-EXPMatchers+OCMockTests.debug.xcconfig */,
+				40342CCC6D9E1583D9938145 /* Pods-EXPMatchers+OCMockTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		3CF75A1A188C4633007B47FA = {
 			isa = PBXGroup;
 			children = (
 				3CF75A42188C4666007B47FA /* EXPMatchers+OCMockTests */,
 				3CF75A2B188C4666007B47FA /* Frameworks */,
 				3CF75A2A188C4666007B47FA /* Products */,
-				58116A96099846D0A0784FB8 /* Pods-EXPMatchers+OCMock.xcconfig */,
-				83C243884D654AB09E12BEBB /* Pods-EXPMatchers+OCMockTests.xcconfig */,
+				1EBE8BE14CDE1AF9ADFAA50F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,7 +136,7 @@
 		3CF75A1B188C4633007B47FA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0620;
 			};
 			buildConfigurationList = 3CF75A1E188C4633007B47FA /* Build configuration list for PBXProject "EXPMatchers+OCMock" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -171,7 +179,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-EXPMatchers+OCMockTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EXPMatchers+OCMockTests/Pods-EXPMatchers+OCMockTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		70DF61E62A4D42409B92DBAE /* Check Pods Manifest.lock */ = {
@@ -218,6 +226,7 @@
 		3CF75A1F188C4633007B47FA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};
@@ -229,10 +238,9 @@
 		};
 		3CF75A4E188C4666007B47FA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 83C243884D654AB09E12BEBB /* Pods-EXPMatchers+OCMockTests.xcconfig */;
+			baseConfigurationReference = 75A879BA5336B1FA97DAC447 /* Pods-EXPMatchers+OCMockTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -246,11 +254,6 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -267,14 +270,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/Headers\"",
-					"\"${PODS_ROOT}/Headers/EXPMatchers+OCMock\"",
-					"\"${PODS_ROOT}/Headers/Expecta\"",
-					"\"${PODS_ROOT}/Headers/OCMock\"",
-					"\"${PODS_ROOT}/Headers/Specta\"",
-					"$(SRCROOT)/..",
-				);
 				INFOPLIST_FILE = "EXPMatchers+OCMockTests/EXPMatchers+OCMockTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
@@ -289,10 +284,9 @@
 		};
 		3CF75A4F188C4666007B47FA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 83C243884D654AB09E12BEBB /* Pods-EXPMatchers+OCMockTests.xcconfig */;
+			baseConfigurationReference = 40342CCC6D9E1583D9938145 /* Pods-EXPMatchers+OCMockTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -307,11 +301,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EXPMatchers+OCMockTests/EXPMatchers+OCMock-Prefix.pch";
@@ -321,14 +310,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/Headers\"",
-					"\"${PODS_ROOT}/Headers/EXPMatchers+OCMock\"",
-					"\"${PODS_ROOT}/Headers/Expecta\"",
-					"\"${PODS_ROOT}/Headers/OCMock\"",
-					"\"${PODS_ROOT}/Headers/Specta\"",
-					"$(SRCROOT)/..",
-				);
 				INFOPLIST_FILE = "EXPMatchers+OCMockTests/EXPMatchers+OCMockTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;

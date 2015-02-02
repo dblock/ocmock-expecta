@@ -12,6 +12,6 @@
 #include <Specta/Specta.h>
 #include <Expecta/Expecta.h>
 #include <OCMock/OCMock.h>
-#include <EXPMatchers+OCMock.h>
+#include "EXPMatchers+OCMock.h"
 
 #endif

@@ -1,24 +1,32 @@
 PODS:
-  - Expecta (0.2.3)
-  - EXPMatchers+OCMock (1.0):
+  - Expecta (0.3.1)
+  - Expecta+OCMock (1.0.0):
     - Expecta
     - OCMock
-  - OCMock (2.2.2)
-  - Specta (0.2.1)
+  - OCMock (2.2.4)
+  - Specta (0.3.0.beta1)
 
 DEPENDENCIES:
-  - EXPMatchers+OCMock (from `../`)
+  - Expecta+OCMock (from `../`)
   - OCMock (~> 2.2.2)
-  - Specta (~> 0.2.1)
+  - Specta (from `https://github.com/specta/specta.git`, tag `v0.3.0.beta1`)
 
 EXTERNAL SOURCES:
-  EXPMatchers+OCMock:
+  Expecta+OCMock:
     :path: ../
+  Specta:
+    :git: https://github.com/specta/specta.git
+    :tag: v0.3.0.beta1
+
+CHECKOUT OPTIONS:
+  Specta:
+    :git: https://github.com/specta/specta.git
+    :tag: v0.3.0.beta1
 
 SPEC CHECKSUMS:
-  Expecta: dbc4a27fabb853bdd2e907e33f11ee43a9a47d0c
-  EXPMatchers+OCMock: de331c2aa1ae2d9b42f0dd940f4b6c841e32f354
-  OCMock: ffba68873fd32cfd35d885bddad23bfa816da4a3
-  Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
+  Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
+  Expecta+OCMock: c8801091b42fac5cbbf65455887636524ffc7528
+  OCMock: 6db79185520e24f9f299548f2b8b07e41d881bd5
+  Specta: d2158a483ad179e5f8d3a29f75ff4fc0ff6fab16
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.36.0.beta.2

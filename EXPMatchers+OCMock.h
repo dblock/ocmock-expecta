@@ -10,4 +10,25 @@
 
 typedef void (^ EmptyBlock)(void);
 
-EXPMatcherInterface(receive, (SEL selector, EmptyBlock block));
+EXPMatcherInterface(receiveIn, (SEL selector, EmptyBlock block));
+
+@interface ORExpectaOCMockMatcher : NSObject <EXPMatcher>
+
+- (instancetype)initWithExpectation:(EXPExpect *)expectation object:(id)object;
+
+@end
+
+
+@interface EXPExpect (receiveMatcher)
+
+/// Expect an object to recieve a selector
+@property (nonatomic, readonly) EXPExpect *(^ receive) (SEL);
+
+/// Expectations around the arguments recieved
+@property (nonatomic, readonly) EXPExpect *(^ with) (NSArray *);
+
+/// Expectations around the arguments recieved
+@property (nonatomic, readonly) EXPExpect *(^ returning) (id);
+
+@end;
+//

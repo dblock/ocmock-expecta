@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
-  s.name         = 'EXPMatchers+OCMock'
-  s.version      = '1.0'
+  s.name         = 'Expecta+OCMock'
+  s.version      = '1.0.0'
   s.summary      = 'Expecta matchers for OCMock.'
   s.description  = "Use OCMock with Expecta."
   s.homepage     = 'https://github.com/dblock/ocmock-expecta'
