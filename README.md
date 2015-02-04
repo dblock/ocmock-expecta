@@ -7,7 +7,8 @@ Expecta-OCMock
 
 ```objc
 // First check that a method is called
-// by it will still call said method in the test.
+// Note: it will still call said method in the test. It's not stubbed.
+// These never stub.
 
 it(@"checks for a method", ^{
     @mockify(sut);
