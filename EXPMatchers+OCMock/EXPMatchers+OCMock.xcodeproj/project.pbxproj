@@ -8,19 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		2C45575806BF4657B8CFD9B3 /* libPods-EXPMatchers+OCMockTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C0A1FDFB0C34A0B9C54DED1 /* libPods-EXPMatchers+OCMockTests.a */; };
-		3CC63708188C56FC00A3A433 /* EXPMatchers+OCMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC63707188C56FC00A3A433 /* EXPMatchers+OCMock.m */; };
+		3CC63708188C56FC00A3A433 /* Expecta+OCMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC63707188C56FC00A3A433 /* Expecta+OCMock.m */; };
 		3CF75A3B188C4666007B47FA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF75A3A188C4666007B47FA /* XCTest.framework */; };
 		3CF75A3C188C4666007B47FA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF75A2C188C4666007B47FA /* Foundation.framework */; };
 		3CF75A3E188C4666007B47FA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF75A3D188C4666007B47FA /* UIKit.framework */; };
 		3CF75A47188C4666007B47FA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3CF75A45188C4666007B47FA /* InfoPlist.strings */; };
 		3CF75A56188C4742007B47FA /* EXPMatchers+OCMockSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF75A55188C4742007B47FA /* EXPMatchers+OCMockSpecs.m */; };
+		60656CFF1A82C95C00E322BE /* EXPExpect+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 60656CF91A82C95C00E322BE /* EXPExpect+Test.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		60656D001A82C95C00E322BE /* FakeTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 60656CFB1A82C95C00E322BE /* FakeTestCase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0C0A1FDFB0C34A0B9C54DED1 /* libPods-EXPMatchers+OCMockTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EXPMatchers+OCMockTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CC63705188C4C7000A3A433 /* EXPMatchers+OCMock-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+OCMock-Prefix.pch"; sourceTree = "<group>"; };
-		3CC63706188C56FC00A3A433 /* EXPMatchers+OCMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+OCMock.h"; path = "../../EXPMatchers+OCMock.h"; sourceTree = "<group>"; };
-		3CC63707188C56FC00A3A433 /* EXPMatchers+OCMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+OCMock.m"; path = "../../EXPMatchers+OCMock.m"; sourceTree = "<group>"; };
+		3CC63706188C56FC00A3A433 /* Expecta+OCMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Expecta+OCMock.h"; path = "../../Expecta+OCMock.h"; sourceTree = "<group>"; };
+		3CC63707188C56FC00A3A433 /* Expecta+OCMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Expecta+OCMock.m"; path = "../../Expecta+OCMock.m"; sourceTree = "<group>"; };
 		3CF75A2C188C4666007B47FA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3CF75A39188C4666007B47FA /* EXPMatchers+OCMockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EXPMatchers+OCMockTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF75A3A188C4666007B47FA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -29,6 +31,10 @@
 		3CF75A46188C4666007B47FA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3CF75A55188C4742007B47FA /* EXPMatchers+OCMockSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EXPMatchers+OCMockSpecs.m"; sourceTree = "<group>"; };
 		40342CCC6D9E1583D9938145 /* Pods-EXPMatchers+OCMockTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EXPMatchers+OCMockTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EXPMatchers+OCMockTests/Pods-EXPMatchers+OCMockTests.release.xcconfig"; sourceTree = "<group>"; };
+		60656CF81A82C95C00E322BE /* EXPExpect+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPExpect+Test.h"; sourceTree = "<group>"; };
+		60656CF91A82C95C00E322BE /* EXPExpect+Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EXPExpect+Test.m"; sourceTree = "<group>"; };
+		60656CFA1A82C95C00E322BE /* FakeTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakeTestCase.h; sourceTree = "<group>"; };
+		60656CFB1A82C95C00E322BE /* FakeTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FakeTestCase.m; sourceTree = "<group>"; };
 		75A879BA5336B1FA97DAC447 /* Pods-EXPMatchers+OCMockTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EXPMatchers+OCMockTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EXPMatchers+OCMockTests/Pods-EXPMatchers+OCMockTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8CA459EFDCAA4951AF2D3CBB /* libPods-EXPMatchers+OCMock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EXPMatchers+OCMock.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -90,8 +96,9 @@
 		3CF75A42188C4666007B47FA /* EXPMatchers+OCMockTests */ = {
 			isa = PBXGroup;
 			children = (
-				3CC63706188C56FC00A3A433 /* EXPMatchers+OCMock.h */,
-				3CC63707188C56FC00A3A433 /* EXPMatchers+OCMock.m */,
+				60656CF71A82C94E00E322BE /* Helpers */,
+				3CC63706188C56FC00A3A433 /* Expecta+OCMock.h */,
+				3CC63707188C56FC00A3A433 /* Expecta+OCMock.m */,
 				3CF75A55188C4742007B47FA /* EXPMatchers+OCMockSpecs.m */,
 				3CF75A43188C4666007B47FA /* Supporting Files */,
 				3CC63705188C4C7000A3A433 /* EXPMatchers+OCMock-Prefix.pch */,
@@ -106,6 +113,17 @@
 				3CF75A45188C4666007B47FA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		60656CF71A82C94E00E322BE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				60656CF81A82C95C00E322BE /* EXPExpect+Test.h */,
+				60656CF91A82C95C00E322BE /* EXPExpect+Test.m */,
+				60656CFA1A82C95C00E322BE /* FakeTestCase.h */,
+				60656CFB1A82C95C00E322BE /* FakeTestCase.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,8 +222,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CC63708188C56FC00A3A433 /* EXPMatchers+OCMock.m in Sources */,
+				60656D001A82C95C00E322BE /* FakeTestCase.m in Sources */,
+				3CC63708188C56FC00A3A433 /* Expecta+OCMock.m in Sources */,
 				3CF75A56188C4742007B47FA /* EXPMatchers+OCMockSpecs.m in Sources */,
+				60656CFF1A82C95C00E322BE /* EXPExpect+Test.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

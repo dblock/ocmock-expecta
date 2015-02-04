@@ -1,52 +1,12 @@
-//
-//  EXPMatchers+OCMockTest.h
-//  Artsy
-//
-//  Created by Daniel Doubrovkine on 1/14/14.
-//  Copyright (c) 2014 Artsy Inc. All rights reserved.
-//
-
-#import "EXPMatchers+OCMock.h"
+#import "Expecta+OCMock.h"
 #import "EXPMatcherHelpers.h"
 #import <OCMock/OCMock.h>
+#import <OCMock/OCPartialMockObject.h>
 #import <objc/runtime.h>
 
-/// With a Block argument
-
-EXPMatcherImplementationBegin(receiveIn, (SEL selector, EmptyBlock block)){
-    __block NSException * _exception;
-
-    match(^BOOL{
-        id mock = [OCMockObject partialMockForObject:actual];
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        [[mock expect] performSelector:selector];
-#pragma clang diagnostic pop
-
-        block();
-        @try {
-            [mock verify];
-            return YES;
-        }
-        @catch (NSException *exception) {
-            _exception = exception;
-            return NO;
-        }
-        @finally {
-            [mock stopMocking];
-        }
-    });
-
-    failureMessageForTo(^NSString *{
-        return [NSString stringWithFormat:@"expected %@ to receive %@: %@", actual, NSStringFromSelector(selector), _exception];
-    });
-
-    failureMessageForNotTo(^NSString *{
-        return [NSString stringWithFormat:@"expected %@ not to receive %@: %@", actual, NSStringFromSelector(selector), _exception];
-    });
-}
-EXPMatcherImplementationEnd
+@interface ORExpectaOCMockMatcher : NSObject <EXPMatcher>
+- (instancetype)initWithExpectation:(EXPExpect *)expectation object:(id)object;
+@end
 
 @interface ORExpectaOCMockMatcher()
 @property (nonatomic, strong) EXPExpect *expectation;
@@ -55,8 +15,7 @@ EXPMatcherImplementationEnd
 @property (nonatomic, strong) id returning;
 
 @property (nonatomic, strong) OCMockRecorder *selectorCheckRecorder;
-@property (nonatomic, strong) OCMockObject *mock;
-
+@property (nonatomic, strong) OCPartialMockObject *mock;
 @end
 
 @implementation ORExpectaOCMockMatcher
@@ -68,31 +27,38 @@ EXPMatcherImplementationEnd
 
     _expectation = expectation;
 
-    _mock = [OCMockObject partialMockForObject:expectation.actual];
+    _mock = expectation.actual;
     _selectorCheckRecorder = [_mock expect];
+
+    [self.selectorCheckRecorder andForwardToRealObject];
 
     return self;
 }
 
 - (void)updateMatcher
 {
+    [self.selectorCheckRecorder releaseInvocation];
+    
     // Yeah, I'm doing it. I know what it is under the hood.
     [(NSMutableArray *)self.selectorCheckRecorder.invocationHandlers removeAllObjects];
 
-    NSMethodSignature *sig = [self.selectorCheckRecorder methodSignatureForSelector:self.selector];
-    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:sig];
-    [invocation retainArguments];
+    NSInvocation *invocation = [self representedInvocation];
+    [invocation invoke];
+}
+
+- (NSInvocation *)representedInvocation
+{
+    NSMethodSignature * mySignature = [self.mock.realObject.class instanceMethodSignatureForSelector:self.selector];
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:mySignature];
+
+    invocation.selector = self.selector;
+    invocation.target = self.selectorCheckRecorder;
 
     for (__unsafe_unretained id object in self.arguments) {
         [invocation setArgument:&object atIndex:[self.arguments indexOfObject:object] +2];
     }
 
-    if (self.returning) {
-        [self.selectorCheckRecorder andReturn:self.returning];
-    }
-
-    [invocation invoke];
-
+    return invocation;
 }
 
 - (BOOL)matches:(id)actual
@@ -103,23 +69,38 @@ EXPMatcherImplementationEnd
 - (void)dealloc
 {
     id mock = self.mock;
-    id theException = nil;
+    NSException *theException = nil;
 
     @try {
         [mock verify];
     }
     @catch (NSException *exception) {
         theException = exception;
-        NSLog(@"------------------------------------------------------------------");
     }
-    @finally {
-        [mock stopMocking];
+
+    if (_returning) {
+        CFTypeRef cfResult;
+
+        NSInvocation *invocation = [self representedInvocation];
+        [invocation setTarget:self.mock.realObject];
+        [invocation invoke];
+        [invocation getReturnValue:&cfResult];
+        if (cfResult)
+            CFRetain(cfResult);
+
+        id result = (__bridge_transfer id)cfResult;
+        if (![result isEqual:self.returning]) {
+            _XCTFailureHandler(self.expectation.testCase, YES, self.expectation.fileName , self.expectation.lineNumber, FALSE, @"Expected a match");
+        }
+
     }
 
     if (theException) {
         EXPFail(self.expectation.testCase, self.expectation.lineNumber, self.expectation.fileName, @"Fail");
-        NSAssert(NO, @"Failed");
+        [theException raise];
     }
+
+    [mock stopMocking];
 }
 
 @end
@@ -153,8 +134,6 @@ EXPMatcherImplementationEnd
         [matcher updateMatcher];
         actual = matcher.mock;
         [self applyMatcher:matcher to:&actual];
-
-
 
         return self;
 

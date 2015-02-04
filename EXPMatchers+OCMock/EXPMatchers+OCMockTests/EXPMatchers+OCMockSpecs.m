@@ -1,11 +1,3 @@
-//
-//  OCMockDemoSpecs.m
-//  OCMockDemo
-//
-//  Created by Daniel Doubrovkine on 1/14/14.
-//  Copyright (c) 2014 Artsy Inc. All rights reserved.
-//
-
 @interface ORObject : NSObject
 @end
 
@@ -17,9 +9,7 @@
 - (void)method3:(NSString *)argument {};
 @end
 
-
-
-SpecBegin(EXPMatchers)
+SpecBegin(ExpectaOCMockMatchers)
 
 __block ORObject *sut;
 
@@ -27,68 +17,47 @@ before(^{
     sut = [[ORObject alloc] init];
 });
 
-//describe(@"with inline bldsadsocks", ^{
-//    it(@"asdas", ^{
-//        expect(sut).to.equal([NSObject new]);
-//    });
-//});
-//
-describe(@"with inline blocks", ^{
+it(@"checks for a method", ^{
+    @mockify(sut);
 
-//    it(@"expect to receive an instance method with a block", ^{
-//        expect(sut).to.receiveIn(@selector(method), ^{
-//            [sut method];
-//        });
-//    });
-//
-//
-//    it(@"can deal with not to recieving an instance method", ^{
-//        expect(sut).toNot.receiveIn(@selector(method), ^{
-//            [sut method2];
-//        });
-//    });
-//
-//    it(@"can run two in a row on the same object", ^{
-//        expect(sut).to.receiveIn(@selector(method), ^{
-//            [sut method];
-//        });
-//
-//        expect(sut).to.receiveIn(@selector(method2), ^{
-//            [sut method2];
-//        });
-//    });
-
+    expect(sut).to.receive(@selector(method));
+    [sut method];
 });
 
-describe(@"with no block", ^{
-    it(@"checks for a method", ^{
-                NSLog(@"BEFORE");
-        expect(sut).to.receive(@selector(method));
 
-        id mockVC = [OCMockObject partialMockForObject:sut];
-        [[mockVC expect] method];
-        [mockVC verify];
-
-        NSLog(@"AFTER");
-//        [sut method];
-                NSLog(@"AFTER ALLL");
-    });
-
+// This is difficult, I have no idea how to force the dealloc. Maybe this has to be not ARC :/
 //    it(@"checks for a method not being called", ^{
-        expect(sut).to.receive(@selector(method));
-        [sut method2];
+//        @mockify(sut);
+//        EXPExpect *expect = expect(sut).to.receive(@selector(method2));
+//        SEL dealloc = NSSelectorFromString(@"dealloc"));
+//        assertFail([expect performSelector:dealloc]; , @"fails correctly");
 //    });
-//
-//    it(@"checks for a return value", ^{
-//        expect(sut).receive(@selector(method2)).returning(@2);
-//        [sut method2];
-//    });
-//
-//    it(@"checks for an argument to the method", ^{
-//        expect(sut).receive(@selector(method3:)).with(@[@"thing"]);
-//        [sut method3:@"thing"];
-//    });
+
+
+it(@"checks for a return value", ^{
+    @mockify(sut);
+    expect(sut).receive(@selector(method2)).returning(@2);
+    [sut method2];
 });
+
+
+//it(@"fails with the wrong return value", ^{
+//    @mockify(sut);
+//    expect(sut).receive(@selector(method2)).returning(@3);
+//    [sut method2];
+//});
+
+
+it(@"checks for an argument to the method", ^{
+    @mockify(sut);
+    expect(sut).receive(@selector(method3:)).with(@[@"thing"]);
+    [sut method3:@"thing"];
+});
+
+//it(@"fails with the wrong argument value", ^{
+//    @mockify(sut);
+//    expect(sut).receive(@selector(method3:)).with(@[@"thingy"]);
+//    [sut method3:@"thing"];
+//});
 
 SpecEnd
-
