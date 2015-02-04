@@ -35,8 +35,12 @@ it(@"checks for an argument to the method", ^{
     expect(sut).receive(@selector(method3:)).with(@[@"thing"]);
     [sut method3:@"thing"];
 });
+```
 
+### Get it
 
+```
+pod "Expecta-OCMock", "~> 1"
 ```
 
 ### Limitations
