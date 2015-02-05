@@ -70,7 +70,7 @@ it(@"supports multiple invocations of @mockify", ^{
     expect(b).receive(@selector(method3:)).with(@[@"b"]);
 
     [a method3:@"a"];
-    [a method3:@"b"];
+    [b method3:@"b"];
 });
 
 //it(@"fails with the wrong argument value", ^{
