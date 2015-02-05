@@ -13,10 +13,6 @@
 #include <Expecta/Expecta.h>
 #include <OCMock/OCMock.h>
 #include "Expecta+OCMock.h"
-
-#import "FakeTestCase.h"
-#import "EXPExpect+Test.h"
-
 #import <XCTest/XCTest.h>
 
 #define assertPass(expr) \

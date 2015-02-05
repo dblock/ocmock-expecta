@@ -46,7 +46,8 @@ pod "Expecta-OCMock", "~> 1"
 
 ### Limitations
 
-Right now you can only us the @mockify once in a test, and I don't think it works if you do the @mockify in a `before` block.
+Running this on a 64 bit simulator will fail, it seems to be that the `expect` isn't being help on to by something else
+and so the dealloc call happens at the end of the declartion instead of at the end of the block's scope. [#4](https://github.com/dblock/ocmock-expecta/issues/4)
 
 ### License
 

@@ -3,6 +3,7 @@
 #import <OCMock/OCMock.h>
 #import <OCMock/OCPartialMockObject.h>
 #import <objc/runtime.h>
+#import <XCTest/XCTest.h>
 
 @interface ORExpectaOCMockMatcher : NSObject <EXPMatcher>
 - (instancetype)initWithExpectation:(EXPExpect *)expectation object:(id)object;
