@@ -54,6 +54,25 @@ it(@"checks for an argument to the method", ^{
     [sut method3:@"thing"];
 });
 
+__block ORObject *a;
+__block ORObject *b;
+
+beforeEach(^{
+    a = [[ORObject alloc] init];
+    b = [[ORObject alloc] init];
+});
+
+it(@"supports multiple invocations of @mockify", ^{
+    @mockify(a)
+    @mockify(b)
+
+    expect(a).receive(@selector(method3:)).with(@[@"a"]);
+    expect(b).receive(@selector(method3:)).with(@[@"b"]);
+
+    [a method3:@"a"];
+    [a method3:@"b"];
+});
+
 //it(@"fails with the wrong argument value", ^{
 //    @mockify(sut);
 //    expect(sut).receive(@selector(method3:)).with(@[@"thingy"]);
