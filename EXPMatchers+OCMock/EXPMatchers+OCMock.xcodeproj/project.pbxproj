@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2C45575806BF4657B8CFD9B3 /* libPods-EXPMatchers+OCMockTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C0A1FDFB0C34A0B9C54DED1 /* libPods-EXPMatchers+OCMockTests.a */; };
-		3CC63708188C56FC00A3A433 /* Expecta+OCMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC63707188C56FC00A3A433 /* Expecta+OCMock.m */; };
 		3CF75A3B188C4666007B47FA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF75A3A188C4666007B47FA /* XCTest.framework */; };
 		3CF75A3C188C4666007B47FA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF75A2C188C4666007B47FA /* Foundation.framework */; };
 		3CF75A3E188C4666007B47FA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF75A3D188C4666007B47FA /* UIKit.framework */; };
@@ -21,8 +20,6 @@
 /* Begin PBXFileReference section */
 		0C0A1FDFB0C34A0B9C54DED1 /* libPods-EXPMatchers+OCMockTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EXPMatchers+OCMockTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CC63705188C4C7000A3A433 /* EXPMatchers+OCMock-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+OCMock-Prefix.pch"; sourceTree = "<group>"; };
-		3CC63706188C56FC00A3A433 /* Expecta+OCMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Expecta+OCMock.h"; path = "../../Expecta+OCMock.h"; sourceTree = "<group>"; };
-		3CC63707188C56FC00A3A433 /* Expecta+OCMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Expecta+OCMock.m"; path = "../../Expecta+OCMock.m"; sourceTree = "<group>"; };
 		3CF75A2C188C4666007B47FA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3CF75A39188C4666007B47FA /* EXPMatchers+OCMockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EXPMatchers+OCMockTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF75A3A188C4666007B47FA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -97,8 +94,6 @@
 			isa = PBXGroup;
 			children = (
 				60656CF71A82C94E00E322BE /* Helpers */,
-				3CC63706188C56FC00A3A433 /* Expecta+OCMock.h */,
-				3CC63707188C56FC00A3A433 /* Expecta+OCMock.m */,
 				3CF75A55188C4742007B47FA /* EXPMatchers+OCMockSpecs.m */,
 				3CF75A43188C4666007B47FA /* Supporting Files */,
 				3CC63705188C4C7000A3A433 /* EXPMatchers+OCMock-Prefix.pch */,
@@ -223,7 +218,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				60656D001A82C95C00E322BE /* FakeTestCase.m in Sources */,
-				3CC63708188C56FC00A3A433 /* Expecta+OCMock.m in Sources */,
 				3CF75A56188C4742007B47FA /* EXPMatchers+OCMockSpecs.m in Sources */,
 				60656CFF1A82C95C00E322BE /* EXPExpect+Test.m in Sources */,
 			);
