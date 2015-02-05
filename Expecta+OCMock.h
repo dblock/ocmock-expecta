@@ -14,16 +14,18 @@
 
 @end;
 
+ // Concatenates A and B
+#define mockify_concat(A, B) A ## B
+
 // This is the @mockify, I used the same technique as libextobjc by using a @try{} @catch with no
 // @ to absorb the initial @.
 
-// Limitiations: This technique means you can only write one @mockify per it block. This is because
-// I couldn't find a way to make a new var name based on the input name, thus: strongOriginalReference
-
-#define mockify(...) \
-try {} @finally {} \
-_Pragma("clang diagnostic push") \
-_Pragma("clang diagnostic ignored \"-Wshadow\"") \
-id strongOriginalReference = __VA_ARGS__; \
-__VA_ARGS__ = [OCMockObject partialMockForObject:strongOriginalReference];\
-_Pragma("clang diagnostic pop")
+#define mockify(OBJ) \
+        try {} @finally {} \
+        _Pragma("clang diagnostic push") \
+        _Pragma("clang diagnostic ignored \"-Wshadow\"") \
+        \
+        typeof(OBJ) mockify_concat(OBJ, _original_) = OBJ; \
+        typeof(OBJ) OBJ = [OCMockObject partialMockForObject:mockify_concat(OBJ, _original_)]; \
+        \
+        _Pragma("clang diagnostic pop")
