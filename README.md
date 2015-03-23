@@ -44,11 +44,6 @@ it(@"checks for an argument to the method", ^{
 pod "Expecta-OCMock", "~> 1"
 ```
 
-### Limitations
-
-Running this on a 64 bit simulator will fail, it seems to be that the `expect` isn't being help on to by something else
-and so the dealloc call happens at the end of the declartion instead of at the end of the block's scope. [#4](https://github.com/dblock/ocmock-expecta/issues/4)
-
 ### License
 
 MIT, see [LICENSE](LICENSE.md)
