@@ -22,10 +22,7 @@
 
 #define mockify(OBJ) \
         try {} @finally {} \
-        _Pragma("clang diagnostic push") \
-        _Pragma("clang diagnostic ignored \"-Wshadow\"") \
         \
         typeof(OBJ) mockify_concat(OBJ, _original_) = OBJ; \
-        typeof(OBJ) OBJ = [OCMockObject partialMockForObject:mockify_concat(OBJ, _original_)]; \
+        OBJ = [OCMockObject partialMockForObject:mockify_concat(OBJ, _original_)]; \
         \
-        _Pragma("clang diagnostic pop")

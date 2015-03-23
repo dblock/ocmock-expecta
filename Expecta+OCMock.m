@@ -6,11 +6,11 @@
 #import <XCTest/XCTest.h>
 
 @interface ORExpectaOCMockMatcher : NSObject <EXPMatcher>
-- (instancetype)initWithExpectation:(EXPExpect *)expectation object:(id)object;
+- (instancetype)initWithExpectation:(EXPExpect *)expectation;
 @end
 
 @interface ORExpectaOCMockMatcher()
-@property (nonatomic, strong) EXPExpect *expectation;
+@property (nonatomic, weak) EXPExpect *expectation;
 @property (nonatomic, assign) SEL selector;
 @property (nonatomic, copy) NSArray *arguments;
 @property (nonatomic, strong) id returning;
@@ -21,7 +21,7 @@
 
 @implementation ORExpectaOCMockMatcher
 
-- (instancetype)initWithExpectation:(EXPExpect *)expectation object:(id)object
+- (instancetype)initWithExpectation:(EXPExpect *)expectation
 {
     self = [super init];
     if (!self) { return nil; }
@@ -123,11 +123,8 @@
 - (EXPExpect *(^) (SEL)) receive {
     __block id actual = self.actual;
 
-    ORExpectaOCMockMatcher *matcher = [[ORExpectaOCMockMatcher alloc] initWithExpectation:self object:actual];
-    objc_setAssociatedObject(self, @selector(_expectaOCMatcher), matcher, OBJC_ASSOCIATION_ASSIGN);
-
-    // This means we don't dealloc correctly, but it is normally set
-    // [[[NSThread currentThread] threadDictionary] setObject:matcher forKey:@"EXP_currentMatcher"];
+    ORExpectaOCMockMatcher *matcher = [[ORExpectaOCMockMatcher alloc] initWithExpectation:self];
+    objc_setAssociatedObject(self, @selector(_expectaOCMatcher), matcher, OBJC_ASSOCIATION_RETAIN);
 
     EXPExpect *(^matcherBlock) (SEL selector) = [^ (SEL selector) {
         matcher.selector = selector;
