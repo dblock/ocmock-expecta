@@ -1,7 +1,7 @@
 Expecta-OCMock
 ==============
 
-[Expecta](https://github.com/specta/expecta) matchers for [OCMock 2.x](https://github.com/erikdoe/ocmock).
+[Expecta](https://github.com/specta/expecta) matchers for [OCMock 3.x](https://github.com/erikdoe/ocmock).
 
 ## Examples
 
@@ -39,6 +39,12 @@ it(@"checks for an argument to the method", ^{
 ```
 
 ### Get it
+
+```
+pod "Expecta-OCMock", "~> 2"
+```
+
+For OCMock 2 support, 
 
 ```
 pod "Expecta-OCMock", "~> 1"
