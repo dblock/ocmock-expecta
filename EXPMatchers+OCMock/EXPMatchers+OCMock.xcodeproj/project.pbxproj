@@ -13,6 +13,7 @@
 		3CF75A3E188C4666007B47FA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF75A3D188C4666007B47FA /* UIKit.framework */; };
 		3CF75A47188C4666007B47FA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3CF75A45188C4666007B47FA /* InfoPlist.strings */; };
 		3CF75A56188C4742007B47FA /* Specs.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF75A55188C4742007B47FA /* Specs.m */; };
+		609C27541AE82AD600E40D1F /* Expecta+OCMock.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 609C27531AE82AD600E40D1F /* Expecta+OCMock.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		3CF75A46188C4666007B47FA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3CF75A55188C4742007B47FA /* Specs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Specs.m; sourceTree = "<group>"; };
 		40342CCC6D9E1583D9938145 /* Pods-EXPMatchers+OCMockTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EXPMatchers+OCMockTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EXPMatchers+OCMockTests/Pods-EXPMatchers+OCMockTests.release.xcconfig"; sourceTree = "<group>"; };
+		609C27531AE82AD600E40D1F /* Expecta+OCMock.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Expecta+OCMock.podspec"; path = "../../Expecta+OCMock.podspec"; sourceTree = "<group>"; };
 		75A879BA5336B1FA97DAC447 /* Pods-EXPMatchers+OCMockTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EXPMatchers+OCMockTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EXPMatchers+OCMockTests/Pods-EXPMatchers+OCMockTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8CA459EFDCAA4951AF2D3CBB /* libPods-EXPMatchers+OCMock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EXPMatchers+OCMock.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -87,6 +89,7 @@
 		3CF75A42188C4666007B47FA /* EXPMatchers+OCMockTests */ = {
 			isa = PBXGroup;
 			children = (
+				609C27531AE82AD600E40D1F /* Expecta+OCMock.podspec */,
 				3CF75A55188C4742007B47FA /* Specs.m */,
 				3CF75A43188C4666007B47FA /* Supporting Files */,
 			);
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CF75A47188C4666007B47FA /* InfoPlist.strings in Resources */,
+				609C27541AE82AD600E40D1F /* Expecta+OCMock.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

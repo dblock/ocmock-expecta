@@ -24,29 +24,11 @@ it(@"checks for a method", ^{
     [sut method];
 });
 
-
-// This is difficult, I have no idea how to force the dealloc. Maybe this has to be not ARC :/
-//    it(@"checks for a method not being called", ^{
-//        @mockify(sut);
-//        EXPExpect *expect = expect(sut).to.receive(@selector(method2));
-//        SEL dealloc = NSSelectorFromString(@"dealloc"));
-//        assertFail([expect performSelector:dealloc]; , @"fails correctly");
-//    });
-
-
 it(@"checks for a return value", ^{
     @mockify(sut);
     expect(sut).receive(@selector(method2)).returning(@2);
     [sut method2];
 });
-
-
-//it(@"fails with the wrong return value", ^{
-//    @mockify(sut);
-//    expect(sut).receive(@selector(method2)).returning(@3);
-//    [sut method2];
-//});
-
 
 it(@"checks for an argument to the method", ^{
     @mockify(sut);
@@ -73,10 +55,25 @@ it(@"supports multiple invocations of @mockify", ^{
     [b method3:@"b"];
 });
 
-//it(@"fails with the wrong argument value", ^{
-//    @mockify(sut);
-//    expect(sut).receive(@selector(method3:)).with(@[@"thingy"]);
-//    [sut method3:@"thing"];
-//});
+/// It is expected that these tests will fail. That means they work properly
+
+it(@"fails when method is not called", ^{
+    @mockify(sut);
+    expect(sut).receive(@selector(method2));
+    [sut method];
+});
+
+
+it(@"fails with the wrong return value", ^{
+    @mockify(sut);
+    expect(sut).receive(@selector(method2)).returning(@3);
+    [sut method2];
+});
+
+it(@"fails with the wrong argument value", ^{
+    @mockify(sut);
+    expect(sut).receive(@selector(method3:)).with(@[@"thingy"]);
+    [sut method3:@"thing"];
+});
 
 SpecEnd
