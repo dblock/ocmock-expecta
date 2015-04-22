@@ -2,8 +2,16 @@
 #import "EXPMatcherHelpers.h"
 #import <OCMock/OCMock.h>
 #import <OCMock/OCPartialMockObject.h>
+#import <OCMock/OCMExpectationRecorder.h>
+#import <OCMock/OCMStubRecorder.h>
+#import <OCMock/OCMInvocationStub.h>
+
 #import <objc/runtime.h>
 #import <XCTest/XCTest.h>
+
+@interface OCMExpectationRecorder (Private)
+- (OCMInvocationStub *)stub;
+@end
 
 @interface ORExpectaOCMockMatcher : NSObject <EXPMatcher>
 - (instancetype)initWithExpectation:(EXPExpect *)expectation;
@@ -15,7 +23,7 @@
 @property (nonatomic, copy) NSArray *arguments;
 @property (nonatomic, strong) id returning;
 
-@property (nonatomic, strong) OCMockRecorder *selectorCheckRecorder;
+@property (nonatomic, strong) OCMExpectationRecorder *selectorCheckRecorder;
 @property (nonatomic, strong) OCPartialMockObject *mock;
 @end
 
@@ -38,10 +46,9 @@
 
 - (void)updateMatcher
 {
-    [self.selectorCheckRecorder releaseInvocation];
+    [(NSMutableArray *)self.selectorCheckRecorder.stub.invocationActions removeAllObjects];
     
     // Yeah, I'm doing it. I know what it is under the hood.
-    [(NSMutableArray *)self.selectorCheckRecorder.invocationHandlers removeAllObjects];
 
     NSInvocation *invocation = [self representedInvocation];
     [invocation invoke];
