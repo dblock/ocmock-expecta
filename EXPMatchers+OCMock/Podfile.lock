@@ -1,10 +1,10 @@
 PODS:
-  - Expecta (0.4.2)
+  - Expecta (1.0.0)
   - Expecta+OCMock (2.0.0):
     - Expecta
     - OCMock
   - OCMock (3.1.2)
-  - Specta (0.5.0)
+  - Specta (1.0.0)
 
 DEPENDENCIES:
   - Expecta+OCMock (from `../`)
@@ -16,9 +16,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Expecta: 78b4e8b0c8291fa4524d7f74016b6065c2e391ec
+  Expecta: 32604574add2c46a36f8d2f716b6c5736eb75024
   Expecta+OCMock: f6e1758896d571d1e591ab569507309750804ca1
   OCMock: a10ea9f0a6e921651f96f78b6faee95ebc813b92
-  Specta: eb90708ed77569bbda089f8ead10bb99b8e9489e
+  Specta: 96fe05fe5c7348b5223f85e862904f6e832abb14
 
-COCOAPODS: 0.37.0.beta.1
+COCOAPODS: 0.37.0

@@ -1,12 +1,15 @@
+
+/// Note: 3 tests are _meant_ to fail.
+
 @interface ORObject : NSObject
 @end
 
 @implementation ORObject
 - (void)method {};
-- (NSNumber *)method2 {
-    return @2;
-};
+- (NSNumber *)method2 { return @2; };
 - (void)method3:(NSString *)argument {};
+- (NSInteger)method4 { return 23; };
+
 @end
 
 SpecBegin(ExpectaOCMockMatchers)
@@ -24,10 +27,16 @@ it(@"checks for a method", ^{
     [sut method];
 });
 
-it(@"checks for a return value", ^{
+it(@"checks for a return object", ^{
     @mockify(sut);
     expect(sut).receive(@selector(method2)).returning(@2);
     [sut method2];
+});
+
+it(@"checks for a return value bridged to an object", ^{
+    @mockify(sut);
+    expect(sut).receive(@selector(method4)).returning(@23);
+    [sut method4];
 });
 
 it(@"checks for an argument to the method", ^{

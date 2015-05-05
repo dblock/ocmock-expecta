@@ -56,7 +56,7 @@
 
 - (NSInvocation *)representedInvocation
 {
-    NSMethodSignature * mySignature = [self.mock.realObject.class instanceMethodSignatureForSelector:self.selector];
+    NSMethodSignature *mySignature = [self.mock.realObject.class instanceMethodSignatureForSelector:self.selector];
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:mySignature];
 
     invocation.selector = self.selector;
@@ -87,18 +87,32 @@
     }
 
     if (_returning) {
-        CFTypeRef cfResult;
 
+
+        // The return value is checked at the end
         NSInvocation *invocation = [self representedInvocation];
         [invocation setTarget:self.mock.realObject];
         [invocation invoke];
-        [invocation getReturnValue:&cfResult];
-        if (cfResult)
+
+        const char *retType = [invocation.methodSignature methodReturnType];
+        BOOL resultIsObject = (strcmp(retType, @encode(id)) == 0 || strcmp(retType, @encode(void)) == 0);
+
+        id result;
+        if (resultIsObject) {
+            CFTypeRef cfResult;
+            [invocation getReturnValue:&cfResult];
+            result = (__bridge_transfer id)cfResult;
             CFRetain(cfResult);
 
-        id result = (__bridge_transfer id)cfResult;
+        } else {
+            // This is a really simple implementation, only supports NSIntegers
+            NSInteger resultValue;
+            [invocation getReturnValue:&resultValue];
+            result = [NSNumber numberWithInteger:resultValue];
+        }
+
         if (![result isEqual:self.returning]) {
-            _XCTFailureHandler(self.expectation.testCase, YES, self.expectation.fileName , self.expectation.lineNumber, FALSE, @"Expected a match");
+            _XCTFailureHandler(self.expectation.testCase, YES, self.expectation.fileName , self.expectation.lineNumber, FALSE, @"Expected a match on the return value");
         }
 
     }
