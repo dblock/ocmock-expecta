@@ -41,13 +41,13 @@ it(@"checks for an argument to the method", ^{
 ### Get it
 
 ```
-pod "Expecta+OCMock", "~> 2"
+pod "Expecta+OCMock", "~> 2.0"
 ```
 
 For OCMock 2 support, 
 
 ```
-pod "Expecta+OCMock", "~> 1"
+pod "Expecta+OCMock", "~> 1.0"
 ```
 
 ### License
